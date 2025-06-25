@@ -1,0 +1,14 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+    font-family: 'futura';
+    src: url(/font/futura.ttf) format('truetype');
+    
+}
+
+@font-face {
+    font-family: 'Abuget';
+    src: url(/font/Abuget.ttf);
+}
