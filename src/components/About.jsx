@@ -58,7 +58,7 @@ const About = () => {
           </div>
         </div>
       </div>
-      <div className="w-screen lg:w-1/2 px-6 mt-10 h-[80vh]">
+      <div className="w-screen lg:w-1/2 flex flex-col justify-center px-6 mt-10 h-[80vh]">
         <h1 className="text-[55px] lg:text-8xl tracking-wider leading-[50px] uppercase font-barlow font-extrabold">
           software
         </h1>

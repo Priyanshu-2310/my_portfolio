@@ -6,7 +6,8 @@ import LocomotiveScroll from 'locomotive-scroll'
 
 import Socialmedialink from './components/Socialmedialink'
 import About from './components/About'
-import GraphicDesiner from './components/Animation/GraphicDesiner'
+import GraphicDesiner from './components/GraphicDesiner'
+import Taekwondo from './Taekwondo'
 
 const App = () => {
   const Locomotivescroll = new LocomotiveScroll();
@@ -18,6 +19,7 @@ const App = () => {
         <SoftwareEngineer />
         <About />
         <GraphicDesiner />
+        <Taekwondo />
     </div>
   )
 }
