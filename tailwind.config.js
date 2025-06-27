@@ -8,7 +8,8 @@ export default {
     extend: {
       fontFamily:{
         futura: ['Futura', 'Sans-Serif'],
-        cursive: ['Abuget', 'Sans-Serif']
+        cursive: ['Abuget', 'Sans-Serif'],
+        barlow: ['Barlow', 'sans-serif'],
       },
       colors: {
         main : "#151312",   // Custom color

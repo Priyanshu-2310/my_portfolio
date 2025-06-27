@@ -39,7 +39,7 @@ const About = () => {
           spinDuration={20}
           className="absolute text-lg -top-10 left-24 text-mainlight"
         />
-        <div className="imagecontainer flex flex-col items-center h-[80vh] rounded-xl w-[380px] bg-whitebg">
+        <div className="imagecontainer flex flex-col items-center  rounded-xl w-[380px] bg-whitebg">
           <div className="image h-72 overflow-hidden mt-8 rounded-xl bg-black w-64">
             <img
               className="h-full w-full object-cover"
@@ -47,8 +47,8 @@ const About = () => {
               alt=""
             />
           </div>
-          <div className="textcontainer px-10 mt-5 flex flex-col w-full items-center">
-            <h1 className="text-main font-futura uppercase text-3xl tracking-wider border-b-2 border-main">
+          <div className="textcontainer px-5 mb-5 mt-5 flex flex-col w-full items-center">
+            <h1 className="text-main font-barlow font-bold uppercase text-3xl tracking-wider border-b-2 border-main">
               Priyanshu
             </h1>
             <p className="text-center text-main mt-5">
@@ -59,10 +59,10 @@ const About = () => {
         </div>
       </div>
       <div className="w-screen lg:w-1/2 px-6 mt-10 h-[80vh]">
-        <h1 className="text-[55px] lg:text-8xl tracking-wider leading-[50px] uppercase font-futura">
+        <h1 className="text-[55px] lg:text-8xl tracking-wider leading-[50px] uppercase font-barlow font-extrabold">
           software
         </h1>
-        <h1 className="text-6xl lg:text-8xl text-mainlight uppercase font-futura">
+        <h1 className="text-6xl lg:text-8xl text-mainlight uppercase font-barlow font-extrabold">
           Engineer
         </h1>
         <p className="mt-6 font-extralight text-regular">
@@ -87,7 +87,7 @@ const About = () => {
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.5, delay: index * 0.2 }}
             >
-              <h1 className="text-5xl font-futura">+{data.num}</h1>
+              <h1 className="text-5xl font-barlow font-semibold">+{data.num}</h1>
               <p className="text-[10px] text-zinc-500 mt-4">{data.title}</p>
             </motion.div>
           ))}

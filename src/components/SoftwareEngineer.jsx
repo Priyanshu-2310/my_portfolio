@@ -27,7 +27,7 @@ const SoftwareEngineer = () => {
         {[...Array(2)].map((_, i) => (
           <h1
             key={i}
-            className="text-[12vh] font-futura uppercase text-mainlight lg:text-[24vh]"
+            className="text-[12vh] font-barlow font-extrabold uppercase text-mainlight lg:text-[24vh]"
           >
             Software Engineer | Graphic Designer | UI/UX Designer &nbsp;
           </h1>
