@@ -11,57 +11,57 @@ const Taekwondo = () => {
   const text1 = useRef(null);
   const text2 = useRef(null);
   const text3 = useRef(null);
+  const view = useRef(null)
 
   useEffect(() => {
-    gsap.from(text1.current, {
-      x: 200,
-      opacity: 0,
-      duration: 1.5,
-      delay: 0.3,
-      scrollTrigger: {
-        trigger: text1.current,
-        start: "top 80%",
-        toggleActions: "play none none reverse",
-      },
-    });
+  gsap.set([text1.current, text2.current, text3.current], { opacity: 0, x: 100 });
 
-    gsap.from(text2.current, {
-      x: -200,
-      opacity: 0,
-      duration: 1.5,
-      delay: 0.5,
-      scrollTrigger: {
-        trigger: text2.current,
-        start: "top 80%",
-        toggleActions: "play none none reverse",
-      },
-    });
+  const tl = gsap.timeline({
+    scrollTrigger: {
+      trigger: view.current,
+      start: "top 80%",
+      toggleActions: "play none none reverse",
+      // markers: true // optional for debugging
+    }
+  });
 
-    gsap.from(text3.current, {
-      y: 100,
-      opacity: 0,
-      duration: 1.5,
-      delay: 0.7,
-      scrollTrigger: {
-        trigger: text3.current,
-        start: "top 80%",
-        toggleActions: "play none none reverse",
-      },
-    });
-  }, []);
+  tl.to(text1.current, {
+    x: 0,
+    opacity: 1,
+    duration: 1.2,
+    ease: "power3.out",
+  })
+    .to(text2.current, {
+      x: 0,
+      opacity: 1,
+      duration: 1.2,
+      ease: "power3.out",
+    }, "-=0.8") // slight overlap
+    .to(text3.current, {
+      x: 0,
+      opacity: 1,
+      duration: 1,
+      ease: "power3.out",
+    }, "-=0.8");
+
+  return () => {
+    tl.kill();
+  };
+}, []);
+
 
   return (
-    <div className="w-full h-screen px-20 gap-3 flex items-center justify-center">
+    <div ref={view} className="w-full h-screen px-20 gap-3 flex items-center justify-center">
       <div className="w-[60%] h-full flex flex-col py-20 bg-main">
         <h1
           ref={text1}
-          className="font-barlow leading-[60px] uppercase text-7xl font-extrabold"
+          className="font-barlow translate-x-[-200px] leading-[60px] uppercase text-7xl font-extrabold"
         >
           National Level
         </h1>
         <h1
           ref={text2}
-          className="font-barlow text-7xl font-extrabold uppercase text-mainlight"
+          className="font-barlow text-7xl translate-x-[-200px] font-extrabold uppercase text-mainlight"
         >
           Taekwondo
         </h1>
