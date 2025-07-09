@@ -1,7 +1,7 @@
-import React, { useRef, useEffect } from "react";
+import React, { useRef, useEffect, useState } from "react";
 import ScrollFloat from "./components/Animation/ScrollFloat";
 import SpotlightCard from "./components/Animation/SpotlightCard";
-
+import { FaPlay } from "react-icons/fa";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -11,48 +11,89 @@ const Taekwondo = () => {
   const text1 = useRef(null);
   const text2 = useRef(null);
   const text3 = useRef(null);
-  const view = useRef(null)
+  const view = useRef(null);
+
+  const [mouseposition, setmouseposition] = useState(false)
+
+  const parentbox = useRef(null);
+  const cursorElement = useRef(null);
 
   useEffect(() => {
-  gsap.set([text1.current, text2.current, text3.current], { opacity: 0, x: 100 });
+    // Initial animation setup
+    gsap.set([text1.current, text2.current, text3.current], {
+      opacity: 0,
+      x: 100,
+    });
 
-  const tl = gsap.timeline({
-    scrollTrigger: {
-      trigger: view.current,
-      start: "top 80%",
-      toggleActions: "play none none reverse",
-      // markers: true // optional for debugging
-    }
-  });
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: view.current,
+        start: "top 80%",
+        toggleActions: "play none none reverse",
+      },
+    });
 
-  tl.to(text1.current, {
-    x: 0,
-    opacity: 1,
-    duration: 1.2,
-    ease: "power3.out",
-  })
-    .to(text2.current, {
+    tl.to(text1.current, {
       x: 0,
       opacity: 1,
       duration: 1.2,
       ease: "power3.out",
-    }, "-=0.8") // slight overlap
-    .to(text3.current, {
-      x: 0,
-      opacity: 1,
-      duration: 1,
-      ease: "power3.out",
-    }, "-=0.8");
+    })
+      .to(
+        text2.current,
+        {
+          x: 0,
+          opacity: 1,
+          duration: 1.2,
+          ease: "power3.out",
+        },
+        "-=0.8"
+      )
+      .to(
+        text3.current,
+        {
+          x: 0,
+          opacity: 1,
+          duration: 1,
+          ease: "power3.out",
+        },
+        "-=0.8"
+      );
 
-  return () => {
-    tl.kill();
-  };
-}, []);
+    const main = parentbox.current;
+    const cursor = cursorElement.current;
 
+    const moveCursor = (dets) => {
+      setmouseposition(true)
+      console.log(mouseposition)
+      gsap.to(cursor, {
+        x: dets.clientX - 55,
+        y: dets.clientY - 55,
+        duration: 1,
+        ease: "power2.out",
+      });
+    };
+
+    main.addEventListener("mousemove", moveCursor);
+
+    main.addEventListener("mouseleave", function(){
+      setmouseposition(false)
+      console.log(mouseposition)
+    })
+
+    return () => {
+      tl.kill();
+      main.removeEventListener("mousemove", moveCursor);
+    };
+  }, []);
 
   return (
-    <div ref={view} className="w-full h-screen px-20 gap-3 flex items-center justify-center">
-      <div className="w-[60%] h-full flex flex-col py-20 bg-main">
+    <div
+      ref={view}
+      className="w-full h-screen px-20 gap-3 flex items-center justify-center"
+    >
+      {/* LEFT BOX */}
+      <div className="w-[60%] h-full flex flex-col justify-center bg-main">
         <h1
           ref={text1}
           className="font-barlow translate-x-[-200px] leading-[60px] uppercase text-7xl font-extrabold"
@@ -103,13 +144,28 @@ const Taekwondo = () => {
         </div>
       </div>
 
-      <div className="w-[40%] flex items-center justify-center h-full">
-        <div className="h-[400px] w-[300px] overflow-hidden rounded-lg bg-gray-50">
-          <img
+      {/* RIGHT BOX */}
+      <div className="w-[40%] relative flex items-center justify-center h-full">
+        <div
+          ref={parentbox}
+          className="h-[550px] relative w-[350px] overflow-hidden rounded-lg bg-gray-50"
+        >
+          <div
+            ref={cursorElement}
+            className={`h-[120px] w-[120px] cursor-pointer fixed left-0 top-0 z-50 bg-mainlight/60 flex items-center justify-center rounded-full  ${mouseposition? "block" : "hidden"}`}
+          >
+            <span className="text-white  cursor-pointer font-semibold text-xl uppercase">
+              <FaPlay className="text-4xl" />
+            </span>
+          </div>
+
+          <div className="absolute top-0 left-0 h-full w-full bg-green-50">
+            <img
             src="/images/taekwondo/main.png"
             className="h-full w-full object-cover"
             alt="Taekwondo"
           />
+          </div>
         </div>
       </div>
     </div>

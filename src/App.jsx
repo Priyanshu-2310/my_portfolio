@@ -9,6 +9,7 @@ import About from './components/About'
 import GraphicDesiner from './components/GraphicDesiner'
 import Taekwondo from './Taekwondo'
 import Aboutpage from './components/Aboutpage'
+import Achievement from './components/Achievement'
 
 const App = () => {
   const Locomotivescroll = new LocomotiveScroll();
@@ -22,6 +23,7 @@ const App = () => {
         <GraphicDesiner />
         <Taekwondo />
         <Aboutpage />
+        <Achievement />
     </div>
   )
 }
