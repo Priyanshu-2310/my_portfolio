@@ -2,6 +2,7 @@ import React, { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import ScrollReveal from "./Animation/ScrollReveal";
+import ChromaGrid from "./Animation/ChromaGrid";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -11,18 +12,33 @@ const Aboutpage = () => {
   const border = useRef(null);
   const leftscrollbox = useRef(null);
 
-  const images = [
+  const items = [
     {
-      id: 1,
-      src: "/images/2.jpg",
+      image: "/images/2.jpg",
+      title: "Sarah Johnson",
+      subtitle: "Frontend Developer",
+      handle: "@sarahjohnson",
+      borderColor: "#3B82F6",
+      gradient: "linear-gradient(145deg, #3B82F6, #000)",
+      url: "https://github.com/sarahjohnson",
     },
     {
-      id: 2,
-      src: "/images/3.jpg",
+      image: "/images/3.jpg",
+      title: "Mike Chen",
+      subtitle: "Backend Engineer",
+      handle: "@mikechen",
+      borderColor: "#10B981",
+      gradient: "linear-gradient(180deg, #10B981, #000)",
+      url: "https://linkedin.com/in/mikechen",
     },
     {
-      id: 3,
-      src: "/images/4.jpg",
+      image: "/images/5.jpeg",
+      title: "Mike Chen",
+      subtitle: "Backend Engineer",
+      handle: "@mikechen",
+      borderColor: "#10B981",
+      gradient: "linear-gradient(180deg, #10B981, #000)",
+      url: "https://linkedin.com/in/mikechen",
     },
   ];
 
@@ -76,7 +92,7 @@ const Aboutpage = () => {
     >
       <div
         ref={page}
-        className="h-[80vh] w-[80%] p-10  bg-[#F5F5DC] rounded-t-2xl"
+        className="h-[80vh] w-[80%] p-10  bg-[#F5F5DC] rounded-2xl "
       >
         <h1 className="text-8xl font-barlow text-[#2F4F4F] uppercase font-extrabold">
           A Boy with Different
@@ -91,9 +107,16 @@ const Aboutpage = () => {
         ></div>
         <div
           ref={leftscrollbox}
-          className="h-[60vh] px-10 items-center justify-start flex rounded-xl mt-10 w-[90vw] opacity-0 bg-mainlight"
+          className="h-[450px]   px-10 items-center gap-5  justify-center flex rounded-xl mt-10 w-[90vw] opacity-0 "
         >
-          <div className="imagediv h-[80%] rounded-lg w-[400px] bg-gray-50"></div>
+          <ChromaGrid
+            items={items}
+            radius={300}
+            damping={0.45}
+            fadeOut={0.6}
+            ease="power3.out"
+            className="h-full items-center w-[100vw] bg-mainlight rounded-2xl"
+          />
         </div>
       </div>
     </div>

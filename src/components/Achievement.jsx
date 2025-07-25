@@ -2,7 +2,7 @@ import React from 'react'
 
 const Achievement = () => {
   return (
-    <div className='h-screen w-full bg-[#FBA44C]'>Achievement</div>
+    <div className='h-screen w-full bg-main'>Achievement</div>
   )
 }
 
