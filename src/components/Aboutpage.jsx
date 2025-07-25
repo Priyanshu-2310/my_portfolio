@@ -3,76 +3,71 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import ScrollReveal from "./Animation/ScrollReveal";
 
-
 gsap.registerPlugin(ScrollTrigger);
 
 const Aboutpage = () => {
   const page = useRef(null);
   const triggerbody = useRef(null);
   const border = useRef(null);
-  const leftscrollbox = useRef(null)
-  
+  const leftscrollbox = useRef(null);
 
- useEffect(() => {
-  const tl = gsap.timeline();
-
-  tl.to(page.current, {
-    height: "100%",
-    width: "100%",
-    duration: 2,
-    ease: "none",
-    scrollTrigger: {
-      trigger: triggerbody.current,
-      start: "top 30%",
-      end: "top 10%",
-      scrub: true,
+  const images = [
+    {
+      id: 1,
+      src: "/images/2.jpg",
     },
-  });
-
-  tl.to(border.current, {
-    width: "80%",
-    ease: "power1.inOut",
-    duration: 2,
-    scrollTrigger: {
-      trigger: triggerbody.current,
-      start: "top 50%",
-      end: "top 10%",
-      scrub: true,
+    {
+      id: 2,
+      src: "/images/3.jpg",
     },
-  });
-
-  // Add opacity animation with scroll trigger
-  gsap.to(leftscrollbox.current, {
-    opacity: 1,
-    // duration: 2,
-    ease: "power1.out",
-    scrollTrigger: {
-      trigger: triggerbody.current,
-      start: "top 10%",
-      end: "top 0%",
-      scrub: true,
-      // markers: true,
+    {
+      id: 3,
+      src: "/images/4.jpg",
     },
+  ];
 
-  });
+  useEffect(() => {
+    const tl = gsap.timeline();
 
-  gsap.to(leftscrollbox.current, {
-    transform: "translateX(-55%)",
-    // duration: 2,
-    ease: "power2.out",
-     scrollTrigger: {
-      trigger: page.current,
-      start: "top 10%",
-      end: "top -20%",
-      scrub: true,
-      markers: true,
-      // pin: true,
-    },
+    tl.to(page.current, {
+      height: "100%",
+      width: "100%",
+      duration: 2,
+      ease: "none",
+      scrollTrigger: {
+        trigger: triggerbody.current,
+        start: "top 30%",
+        end: "top 10%",
+        scrub: true,
+      },
+    });
 
-  })
+    tl.to(border.current, {
+      width: "80%",
+      ease: "power1.inOut",
+      duration: 2,
+      scrollTrigger: {
+        trigger: triggerbody.current,
+        start: "top 50%",
+        end: "top 10%",
+        scrub: true,
+      },
+    });
 
-}, []);
-
+    // Add opacity animation with scroll trigger
+    gsap.to(leftscrollbox.current, {
+      opacity: 1,
+      // duration: 2,
+      ease: "power1.out",
+      scrollTrigger: {
+        trigger: triggerbody.current,
+        start: "top 10%",
+        end: "top 0%",
+        scrub: true,
+        // markers: true,
+      },
+    });
+  }, []);
 
   return (
     <div
@@ -94,10 +89,12 @@ const Aboutpage = () => {
           ref={border}
           className="h-2 w-10 mt-8 bg-mainlight rounded-lg"
         ></div>
-        <div ref={leftscrollbox} className="h-[60vh] items-center justify-start flex rounded-xl mt-10 w-[200vw] opacity-0 bg-mainlight">
-
+        <div
+          ref={leftscrollbox}
+          className="h-[60vh] px-10 items-center justify-start flex rounded-xl mt-10 w-[90vw] opacity-0 bg-mainlight"
+        >
+          <div className="imagediv h-[80%] rounded-lg w-[400px] bg-gray-50"></div>
         </div>
-        
       </div>
     </div>
   );

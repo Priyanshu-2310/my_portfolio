@@ -23,6 +23,7 @@
     "react-icon": "^1.0.0",
     "react-icons": "^5.5.0",
     "react-intersection-observer": "^9.16.0",
+    "sheryjs": "^1.0.0-beta.0.1.8",
     "swiper": "^11.2.10",
     "three": "^0.174.0"
   },
