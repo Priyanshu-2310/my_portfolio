@@ -92,7 +92,7 @@ const Aboutpage = () => {
     >
       <div
         ref={page}
-        className="h-[80vh] w-[80%] p-10  bg-[#F5F5DC] rounded-2xl "
+        className="h-[80vh] w-[80%] p-10  bg-[#F5F5DC] rounded-3xl "
       >
         <h1 className="text-8xl font-barlow text-[#2F4F4F] uppercase font-extrabold">
           A Boy with Different
